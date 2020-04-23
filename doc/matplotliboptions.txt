@@ -1,0 +1,23 @@
+# matplotlib.pyplot options
+import matplotlib.pyplot as plt 
+
+def Num_Format(x, pos): 
+    # The two arguments are the number and tick position
+    string = '{:,.0f}'.format(x)
+    return string
+
+from matplotlib.ticker import FuncFormatter
+
+formatter = FuncFormatter(Num_Format)
+
+fig, axs = plt.subplots(1)
+
+axs.plot(prices, 'k', linewidth=.3, label = 'XBTUSD')
+axs.plot(ema20, 'b', linewidth=.7, label = 'EMA20d')
+axs.plot(ema80, 'g', linewidth=.7, label = 'EMA80d')
+
+axs.set_title('XBTUSD Price and EMAs')
+axs.grid(axis='both', linestyle='--', linewidth=.1)
+axs.yaxis.set_major_formatter(formatter)
+axs.set(ylabel='USD')
+axs.legend()

@@ -1,0 +1,11 @@
+rename filename to timeframeutils.py
+create a function titled find_common_window which takes 3 arguments; 2 dataframes and a string which is the name of the column that contains the date index
+
+import timeseriesutils
+time_boundaries = timeseriesutils.find_common_window(pricesA, pricesB, 'date')
+>>> time_boundaries  ---> (t1, t2)
+
+tC1, tC2 = find_common_window(...)
+plot in same range
+voldf = voldf[tC1:tC2]
+prices = prices[tC1:tC2]
