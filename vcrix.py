@@ -1,10 +1,14 @@
 # vcrix index
 
+import datetime
 import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter
+
+
 voldf = pd.read_csv('vcrix.csv',  usecols = [2, 3], parse_dates=['date'])
 voldf['date'] = voldf['date'].dt.date
 voldf = voldf.set_index('date')
-import datetime
 
 # voldf.loc[datetime.date(2014,11,28)]  # to comment whole section in sublime, select,  cmd+/
 # voldf.loc[datetime.date(2020,3,7)]
@@ -25,9 +29,6 @@ def Num_Format(x, pos):
     # The two arguments are the number and tick position
     string = '{:,.0f}'.format(x)
     return string
-
-import matplotlib.pyplot as plt
-from matplotlib.ticker import FuncFormatter
 
 formatter = FuncFormatter(Num_Format)
 
