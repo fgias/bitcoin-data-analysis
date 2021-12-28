@@ -5,7 +5,7 @@ import datetime
 
 
 # Import vcrix data.
-voldf = pd.read_csv('vcrix.csv',  usecols=[2, 3], parse_dates=['date'])
+voldf = pd.read_csv('data/vcrix.csv',  usecols=[2, 3], parse_dates=['date'])
 voldf['date'] = voldf['date'].dt.date
 voldf = voldf.set_index('date')
 
@@ -13,9 +13,9 @@ tA1 = voldf.reset_index().loc[0, 'date']
 tA2 = voldf.reset_index().loc[len(voldf) - 1, 'date']
 
 # Same for XBTUSD price.
-prices = pd.read_csv('XBTUSD_past1000_days.csv')
+prices = pd.read_csv('data/XBTUSD_past1000_days.csv')
 # If you want to use closing price only.
-prices = pd.read_csv('XBTUSD_past1000_days.csv', usecols=[0, 4],
+prices = pd.read_csv('data/XBTUSD_past1000_days.csv', usecols=[0, 4],
                      parse_dates=['timestamp'])
 prices['date'] = prices['timestamp'].dt.date
 prices = prices.set_index('date')
